@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>GitHub search</title>
+  </head>
+  <body>
+    <main class="container" id="app">
+      <i class='bx bxl-github'></i>
+      <h1>Search GitHub users</h1>
+      <form  action="" v-on:submit.prevent="doSearch" class="searchArea">
+        <input v-model="search" type="text" class="search" placeholder="search user" />
+        <button class="btnSearch" type="submit">
+          <i class="bx bx-search" style="color: #ffffff"></i>
+        </button>
+      </form>
+      
+      <article class="cardUser" v-if="result">
+        <a href="#" class="actionFavorite">
+          <span id="favoriteText" class="estadoFavorite">Add Favorite</span>
+          <i class="bx bxs-star"></i>
+        </a>
+        <h3>{{dataUser[0]}}</h3>
+        <div class="infoUser">
+          <img
+            :src="dataUser[1]"
+            class="userImg"
+            alt="imagen del usuario"
+          />
+
+          <p class="descriptionUser">
+            {{dataUser[2]}}
+            <a :href="dataUser[3]" target="_blank" class="pageUser"
+            >{{dataUser[3]}}</a
+          >
+          </p>
+          
+        </div>
+      </article>
+      <div v-if="error" class="errorMessage">{{message}}</div>
+    </main>
+    <footer class="legal">
+      Creado por <a href="https://github.com/corpasdev" target="_blank">Brandon Corpas</a>, de dev para dev ❤👨‍💻
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+      const montedApp = app.mount('#app');
+    </script>
+  </body>
+</html>
